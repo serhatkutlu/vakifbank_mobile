@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "vakifbank_mobile"
 include(":app")
- 
+include(":core:network")
