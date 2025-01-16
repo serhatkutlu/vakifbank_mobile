@@ -1,6 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("com.google.dagger.hilt.android")
+    id ("kotlin-kapt")
+
+
+
+
 }
 
 android {
@@ -10,8 +16,14 @@ android {
     defaultConfig {
         minSdk = 24
 
+        buildConfigField("String", "BASE_URL",  "\"https://openexchangerates.org/api/\"")
+        buildConfigField("String", "API_KEY", "\"${project.properties["apiKey"]}\"")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+    }
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -40,4 +52,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+
+    api (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.logging.interceptor)
+
+    implementation (libs.hilt.android)
+    kapt (libs.hilt.compiler)
+
+
 }
