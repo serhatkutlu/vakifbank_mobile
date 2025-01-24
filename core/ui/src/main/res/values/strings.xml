@@ -4,4 +4,9 @@
     <string name="button_positive">Okay</string>
     <string name="button_negative">Cancel</string>
 
+    <string name="bottom_nav_fast_transactions">FAST Transactions</string>
+    <string name="bottom_nav_marketKnowledge">Market Knowledge</string>
+    <string name="bottom_nav_calculation_tools">Calculation Tools</string>
+    <string name="bottom_nav_other_transactions">Other Transactions</string>
+
 </resources>
