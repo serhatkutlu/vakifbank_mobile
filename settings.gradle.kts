@@ -26,3 +26,4 @@ include(":core:data")
 include(":core:domain")
 include(":core:common")
 
+include(":core:ui")

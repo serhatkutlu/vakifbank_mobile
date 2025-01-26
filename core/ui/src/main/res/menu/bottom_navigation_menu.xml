@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_fast_transactions"
+        android:icon="@drawable/fast"
+    android:title="@string/bottom_nav_fast_transactions" />
+
+    <!-- İkinci Menü Öğesi -->
+    <item
+        android:id="@+id/bottom_market_knowledge"
+        android:icon="@drawable/fq"
+    android:title="@string/bottom_nav_marketKnowledge" />
+
+
+    <item
+
+        android:title=""
+        android:enabled="false"
+     />
+
+    <item
+        android:id="@+id/bottom_calculation_tools"
+        android:icon="@drawable/calculation_tools_icon"
+    android:title="@string/bottom_nav_calculation_tools" />
+    <item
+        android:id="@+id/bottom_other_transactions_test"
+        android:icon="@drawable/menu"
+
+        android:title="@string/bottom_nav_other_transactions" />
+</menu>
