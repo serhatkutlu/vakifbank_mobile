@@ -1,9 +1,12 @@
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.example.ui.databinding.ItemDialogMessageBinding
 import com.example.ui.util.UiComponents
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -30,6 +33,33 @@ abstract class BaseFragment<VB : ViewBinding>(
         initUi()
         initObservers()
     }
+
+
+    override fun showCustomDialog(
+        message: String,
+        isInfoMessage: Boolean,
+        cancelCallBack: (() -> Unit)?,
+        okCallBack: (() -> Unit)?
+    ) {
+        val dialogView=ItemDialogMessageBinding.inflate(LayoutInflater.from(requireContext()))
+
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+            .setView(dialogView.root)
+            .setCancelable(true)
+
+        val dialog = dialogBuilder.create()
+         dialog.window?.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(), com.example.ui.R.drawable.white_rounded_bg))
+
+        val button = dialogView.buttonPositive
+        button.setOnClickListener {
+            okCallBack?.invoke()
+        }
+
+        dialog.show()
+        val messageTextView = dialogView.tvMessage
+        messageTextView.text = message
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
