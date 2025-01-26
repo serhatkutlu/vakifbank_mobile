@@ -1,12 +1,11 @@
 package com.example.ui.util
 
 interface UiComponents {
-    fun initUi() {
-    }
 
 
-    fun initObservers() {
-    }
+    fun initUi()
 
+
+    fun initObservers()
 
 }
