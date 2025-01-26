@@ -28,3 +28,4 @@ include(":core:common")
 
 include(":core:ui")
 include(":feature:splash")
+include(":core:navigation")
