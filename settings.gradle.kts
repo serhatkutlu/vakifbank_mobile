@@ -27,3 +27,4 @@ include(":core:domain")
 include(":core:common")
 
 include(":core:ui")
+include(":feature:splash")
