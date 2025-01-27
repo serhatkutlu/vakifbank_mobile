@@ -8,8 +8,7 @@ interface UiComponents {
 
     fun showCustomDialog(
         message: String,
-        isInfoMessage: Boolean,
-        cancelCallBack: (() -> Unit)? = null,
+        oktext:String="Okey",
         okCallBack: (() -> Unit)? = null,
     )
 

@@ -37,8 +37,7 @@ abstract class BaseFragment<VB : ViewBinding>(
 
     override fun showCustomDialog(
         message: String,
-        isInfoMessage: Boolean,
-        cancelCallBack: (() -> Unit)?,
+        oktext: String,
         okCallBack: (() -> Unit)?
     ) {
         val dialogView=ItemDialogMessageBinding.inflate(LayoutInflater.from(requireContext()))
@@ -51,7 +50,9 @@ abstract class BaseFragment<VB : ViewBinding>(
          dialog.window?.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(), com.example.ui.R.drawable.white_rounded_bg))
 
         val button = dialogView.buttonPositive
+        button.text = oktext
         button.setOnClickListener {
+            dialog.dismiss()
             okCallBack?.invoke()
         }
 

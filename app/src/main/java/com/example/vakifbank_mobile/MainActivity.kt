@@ -63,9 +63,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        runBlocking {
-            datasource.getExchangeRatesData()
-        }
+
     }
 
 
