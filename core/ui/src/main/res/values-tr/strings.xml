@@ -9,6 +9,6 @@
     <string name="bottom_nav_calculation_tools">Calculation Tools</string>
     <string name="bottom_nav_other_transactions">Other Transactions</string>
 
-    <string name="internet_connection_error_title"> An internet connection is required to use VakıfBank Mobile. Please check your internet settings and try again.</string>
+    <string name="internet_connection_error_title"> Vakıf Bank Mobil\'i kullanabilmek için internet bağlantınızın olması gerekmektedir.Lütfen internet ayarlarınızı kontrol edip tekrar denayiniz</string>
 
 </resources>

@@ -20,6 +20,7 @@
 
 
 
+
     <com.example.ui.customviews.CustomBottomNavigationView
         android:id="@+id/tata"
         app:menu="@menu/bottom_navigation_menu"
