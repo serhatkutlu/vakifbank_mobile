@@ -5,5 +5,6 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="light_gray">#FFC4C4C4</color>">
     <color name="darkgrey">#878787</color>
-    <color name="orange">#FFAC41</color>
+    <color name="orange">#fcb100</color>
+
 </resources>

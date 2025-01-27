@@ -16,5 +16,27 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="toolbar_text_appearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="login_secondary_card_text_appearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="button_orange_style" >
+        <item name="android:background">@drawable/button_selector</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+
 
 </resources>
