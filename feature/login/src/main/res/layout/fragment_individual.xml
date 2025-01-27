@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.fragments.IndividualFragment"
+    android:padding="15dp"
+    android:layout_marginHorizontal="15dp"
+    tools:theme="@style/Base.Theme.Vakifbank_mobile">
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/text_input_layout_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="test"
+            android:textColorHint="@color/til_box_stroke_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/text_input_layout_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+
+        style="@style/button_orange_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="okey"/>
+</LinearLayout>

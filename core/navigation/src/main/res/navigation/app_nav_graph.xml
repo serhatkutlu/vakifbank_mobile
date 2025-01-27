@@ -2,12 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:app="http://schemas.android.com/apk/res-auto"
              android:id="@+id/app_nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/loginFragment">
 
 
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.splash.presentation.SplashFragment"
+         />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.login.presentation.fragments.LoginFragment"
          />
 
 

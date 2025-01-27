@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_story_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:theme="@style/Base.Theme.Vakifbank_mobile"
+        app:strokeColor="@color/orange"
+        app:strokeWidth="2dp"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="100dp"
+       >
+       <androidx.appcompat.widget.AppCompatImageView
+           android:id="@+id/iv_story_image"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:src="@drawable/ic_be_customer"/>
+    </com.google.android.material.card.MaterialCardView>
+    <TextView
+        android:id="@+id/tv_story_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/circular_image_text_appearance"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:gravity="center"
+        />
+</LinearLayout>
