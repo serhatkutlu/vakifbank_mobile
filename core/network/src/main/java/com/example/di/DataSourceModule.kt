@@ -1,7 +1,7 @@
 package com.example.di
 
-import com.example.datasource.exchangedataSource.abstraction.ExchangeRatesDataSource
-import com.example.datasource.exchangedataSource.implementation.ExchangeRatesDataSourceImpl
+import com.example.datasource.exchangedatasource.abstraction.ExchangeRatesDataSource
+import com.example.datasource.exchangedatasource.implementation.ExchangeRatesDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
