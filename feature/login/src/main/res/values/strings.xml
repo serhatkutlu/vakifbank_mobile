@@ -1,4 +1,21 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="individual_tab_name">RETAIL</string>
+    <string name="individual_tab_id_hint">TR ID or Customer Number</string>
+    <string name="individual_tab_password_hint">Digital Password</string>
+    <string name="individual_tab_button_text">Continue</string>
+
+    <string name="commercial_tab_name">Commercial</string>
+    <string name="commercial_tab_hint_customer_Number">Customer Number</string>
+    <string name="commercial_tab_hint_user_code">User Code</string>
+    <string name="commercial_tab_hint_digital_password">Digital Password</string>
+    <string name="commercial_tab_button_text">Continue</string>
+
+
+    <string name="dont_have_password_text">Dont Have Digital Password/Forgot Digital Password</string>
+
+
+    <string name="button_become_a_customer_text">Become a Customer</string>
+    <string name="button_cepte_kazan_text">Cepte_Kazan</string>
+    <string name="button_qr_transaction_text">QR Transactions</string>
 </resources>

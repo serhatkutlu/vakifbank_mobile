@@ -16,7 +16,8 @@
         android:layout_marginVertical="10dp"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:hint="test"
+            android:id="@+id/til_id"
+            android:hint="@string/individual_tab_id_hint"
             android:textColorHint="@color/til_box_stroke_color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -31,16 +32,17 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:hint="test"
+            android:id="@+id/til_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/individual_tab_password_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-
+        android:id="@+id/button"
         style="@style/button_orange_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="okey"/>
+        android:text="@string/individual_tab_button_text"/>
 </LinearLayout>

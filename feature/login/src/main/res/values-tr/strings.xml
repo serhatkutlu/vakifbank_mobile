@@ -1,0 +1,23 @@
+<resources>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="individual_tab_name">Bireysel</string>
+    <string name="individual_tab_id_hint">TC Kimlik No veya Müşteri Numarası</string>
+    <string name="individual_tab_password_hint">Dijital Şifre</string>
+    <string name="individual_tab_button_text">DEVAM</string>
+
+    <string name="commercial_tab_name">Ticari</string>
+    <string name="commercial_tab_hint_customer_Number">Müşteri Numarası</string>
+    <string name="commercial_tab_hint_user_code">Kullanıcı Kodu</string>
+    <string name="commercial_tab_hint_digital_password">Dijital Şifre</string>
+    <string name="commercial_tab_button_text">DEVAM</string>
+
+
+    <string name="dont_have_password_text">Dijital Şifrem Yok/Şifremi Unuttum</string>
+
+    <string name="button_become_a_customer_text">Vakıfbank Müşterisi Ol</string>
+    <string name="button_cepte_kazan_text">Cepte_Kazan</string>
+    <string name="button_qr_transaction_text">Karekod İşlemleri</string>
+
+
+</resources>

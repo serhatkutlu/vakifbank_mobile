@@ -1,11 +1,10 @@
 package com.example.login.presentation.fragments
 
 import BaseFragment
-import android.view.View
-import androidx.lifecycle.lifecycleScope
+
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.example.login.R
 import com.example.login.databinding.FragmentLoginBinding
 import com.example.login.decoration.StoryRvItemDecoration
 import com.example.login.presentation.adapter.PagerAdapter
@@ -13,7 +12,9 @@ import com.example.login.presentation.adapter.StoryRvAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 
+
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
+
 
     private val storyRvAdapter by lazy {
             StoryRvAdapter(listOf("test1","test2","test3","test4","test5","test6","test7","test8","test9")){
@@ -36,8 +37,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             vpPager.adapter=pagerAdapter
             TabLayoutMediator(tlTab,vpPager){tab,position->
                 when(position){
-                    0->tab.text="İndividual"
-                    1->tab.text="Commercial"
+                    0->tab.text=getText(R.string.individual_tab_name)
+                    1->tab.text=getText(R.string.commercial_tab_name)
                 }
 
                 }.attach()
