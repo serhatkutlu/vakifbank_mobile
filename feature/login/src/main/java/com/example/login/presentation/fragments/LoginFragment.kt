@@ -1,19 +1,25 @@
 package com.example.login.presentation.fragments
 
-import BaseFragment
+import android.util.Log
+import androidx.fragment.app.viewModels
+import com.example.ui.base.BaseFragment
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.example.common.resource.ResourceUi
 import com.example.login.R
 import com.example.login.databinding.FragmentLoginBinding
 import com.example.login.decoration.StoryRvItemDecoration
 import com.example.login.presentation.adapter.PagerAdapter
 import com.example.login.presentation.adapter.StoryRvAdapter
+import com.example.login.presentation.viewmodel.LoginViewModel
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
-
-
+@AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
+
+    private val viewmodel by viewModels<LoginViewModel>()
 
 
     private val storyRvAdapter by lazy {
@@ -30,6 +36,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     override fun initUi() {
         initStoryRv()
         initViewPager()
+    }
+
+    override fun initObservers() {
+
     }
 
     private fun initViewPager() {
@@ -57,7 +67,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         }
     }
 
-    override fun initObservers() {
+    override suspend fun onFragmentStarted() {
+        viewmodel.loginState.collect{
+            when(it.storyData){
+               is  ResourceUi.Success ->{
+                   it.storyData.data?.get(0)?.title?.let { it1 -> Log.d("serhat", it1) }
+               }
+                else->{
+                }
+            }
+        }
     }
 
 

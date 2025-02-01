@@ -1,6 +1,6 @@
 package com.example.login.presentation.fragments
 
-import BaseFragment
+import com.example.ui.base.BaseFragment
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher

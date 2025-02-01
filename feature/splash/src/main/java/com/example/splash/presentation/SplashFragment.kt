@@ -1,6 +1,6 @@
 package com.example.splash.presentation
 
-import BaseFragment
+import com.example.ui.base.BaseFragment
 import com.example.common.extension.Extension.isInternetAvailable
 import com.example.splash.databinding.FragmentSplashBinding
 

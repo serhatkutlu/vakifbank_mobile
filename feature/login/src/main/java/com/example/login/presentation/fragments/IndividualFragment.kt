@@ -1,6 +1,6 @@
 package com.example.login.presentation.fragments
 
-import BaseFragment
+import com.example.ui.base.BaseFragment
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
@@ -9,7 +9,7 @@ import com.example.login.databinding.FragmentIndividualBinding
 import com.example.login.util.Constants
 
 
-class IndividualFragment():BaseFragment<FragmentIndividualBinding>(FragmentIndividualBinding::inflate) {
+class IndividualFragment(): BaseFragment<FragmentIndividualBinding>(FragmentIndividualBinding::inflate) {
 
 
     private var idIsValidate = false
