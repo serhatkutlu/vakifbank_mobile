@@ -17,6 +17,7 @@ android {
         minSdk = 24
 
         buildConfigField("String", "BASE_URL",  "\"https://openexchangerates.org/api/\"")
+        buildConfigField("String", "STORY_BASE_URL",  "\"https://raw.githubusercontent.com/serhatkutlu/\"")
         buildConfigField("String", "API_KEY", "\"${project.properties["apiKey"]}\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
