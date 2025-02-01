@@ -5,16 +5,14 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.datasource.exchangedataSource.abstraction.ExchangeRatesDataSource
+import com.example.datasource.exchangedatasource.abstraction.ExchangeRatesDataSource
 import com.example.ui.customviews.CustomBottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 

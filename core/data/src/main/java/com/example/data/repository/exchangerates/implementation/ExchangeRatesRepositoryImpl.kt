@@ -4,7 +4,7 @@ import com.example.data.mapper.toRateUiData
 import com.example.data.repository.BaseRepository
 import com.example.common.resource.Resource
 import com.example.common.resource.transform
-import com.example.datasource.exchangedataSource.abstraction.ExchangeRatesDataSource
+import com.example.datasource.exchangedatasource.abstraction.ExchangeRatesDataSource
 import com.example.domain.model.exchangerate.RateUiData
 import com.example.domain.repository.abstraction.ExchangeRatesRepository
 import kotlinx.coroutines.flow.Flow

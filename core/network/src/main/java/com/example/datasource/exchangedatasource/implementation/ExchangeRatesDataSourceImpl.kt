@@ -1,6 +1,6 @@
-package com.example.datasource.exchangedataSource.implementation
+package com.example.datasource.exchangedatasource.implementation
 
-import com.example.datasource.exchangedataSource.abstraction.ExchangeRatesDataSource
+import com.example.datasource.exchangedatasource.abstraction.ExchangeRatesDataSource
 import com.example.dto.exchangerates.response.ExchangeRates
 import com.example.service.ExchangeRatesService
 import retrofit2.Response
