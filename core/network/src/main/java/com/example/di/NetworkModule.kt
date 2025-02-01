@@ -12,6 +12,7 @@ import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.create
 import javax.inject.Named
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 
@@ -22,24 +23,32 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    @Named("baseRetrofit")
+    @BaseRetrofit
     fun provideRetrofit(apiKeyInterceptor: ApiKeyInterceptor): Retrofit =
         RetrofitFactory(apiKeyInterceptor).createRetrofit(BuildConfig.BASE_URL)
 
-     @Provides
+    @Provides
     @Singleton
-     @Named("StoryRetrofit")
+    @StoryRetrofit
     fun provideStoryUrlRetrofit(): Retrofit =
-        RetrofitFactory().createRetrofit(BuildConfig.STORY_BASE_URL)
-
-
+        RetrofitFactory(null).createRetrofit(BuildConfig.STORY_BASE_URL)
 
 
     @Provides
     @Singleton
-    fun provideExchangeRatesService(@Named("baseRetrofit")retrofit: Retrofit): ExchangeRatesService =retrofit.create()
+    fun provideExchangeRatesService(@BaseRetrofit retrofit: Retrofit): ExchangeRatesService =
+        retrofit.create()
 
     @Provides
     @Singleton
-    fun provideStoryService(@Named("StoryRetrofit")retrofit: Retrofit): StoryService =retrofit.create()
+    fun provideStoryService(@StoryRetrofit retrofit: Retrofit): StoryService = retrofit.create()
+
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class BaseRetrofit
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class StoryRetrofit
 }

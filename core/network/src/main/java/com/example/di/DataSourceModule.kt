@@ -2,6 +2,8 @@ package com.example.di
 
 import com.example.datasource.exchangedatasource.abstraction.ExchangeRatesDataSource
 import com.example.datasource.exchangedatasource.implementation.ExchangeRatesDataSourceImpl
+import com.example.datasource.storydatasource.abstraction.StoryDataSource
+import com.example.datasource.storydatasource.implementation.StoryDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -13,7 +15,8 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 abstract class DataSourceModule {
 
-    @Singleton
     @Binds
     abstract fun bindExchangeRatesDataSource(exchangeRatesDataSourceImpl: ExchangeRatesDataSourceImpl): ExchangeRatesDataSource
+    @Binds
+    abstract fun bindStoryDataSource(storyDataSourceImpl: StoryDataSourceImpl): StoryDataSource
 }
