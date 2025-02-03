@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
-class RetrofitFactory @Inject constructor(private val apiKeyInterceptor: ApiKeyInterceptor?=null) {
+class RetrofitFactory @Inject constructor(private val apiKeyInterceptor: ApiKeyInterceptor?) {
 
 
     fun createRetrofit(

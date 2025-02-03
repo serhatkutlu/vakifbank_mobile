@@ -18,6 +18,7 @@ retrofit = "2.11.0"
 javax-inject = "1"
 navigationFragmentKtx = "2.8.5"
 navigationUiKtx = "2.8.5"
+lifecycleRuntimeAndroid = "2.8.7"
 
 
 
@@ -41,6 +42,7 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javax-inject" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+androidx-lifecycle-runtime-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-android", version.ref = "lifecycleRuntimeAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
