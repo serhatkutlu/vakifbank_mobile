@@ -10,12 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:clipChildren="false"
         app:cardCornerRadius="10dp">
 
         <LinearLayout
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
+            android:clipChildren="false"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -23,7 +25,9 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_story"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:clipChildren="false"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

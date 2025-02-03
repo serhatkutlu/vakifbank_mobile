@@ -3,16 +3,22 @@ package com.example.login.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.model.story.StoryUiData
 import com.example.login.databinding.ItemStoryBinding
+import com.example.ui.extensions.extension.loadImageWithGlide
 
-class StoryRvAdapter(private val list: List<String>,  val onclick:(String)->Unit): RecyclerView.Adapter<StoryRvAdapter.LoginViewHolder>() {
+class StoryRvAdapter(private var list: List<StoryUiData> = listOf(), val onclick:(StoryUiData)->Unit): RecyclerView.Adapter<StoryRvAdapter.LoginViewHolder>() {
 
 
-    inner class LoginViewHolder(val binding: ItemStoryBinding): RecyclerView.ViewHolder(binding.root) {
+    fun updateList(list: List<StoryUiData>) {
+        this.list=list
+        notifyDataSetChanged()
+    }
 
-        fun bind(item: String) {
-            binding.tvStoryName.text=item
-            //binding.cvStoryImage
+    inner class LoginViewHolder(private val binding: ItemStoryBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: StoryUiData) {
+            binding.tvStoryName.text=item.title
+                binding.ivStoryImage.loadImageWithGlide(item.iconUrl)
             binding.root.setOnClickListener {
                 onclick(item)
             }
