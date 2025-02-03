@@ -1,3 +1,5 @@
+package com.example.ui.base
+
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -5,11 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.example.ui.databinding.ItemDialogMessageBinding
 import com.example.ui.util.UiComponents
+import kotlinx.coroutines.launch
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
+
+
 
 abstract class BaseFragment<VB : ViewBinding>(
     private val inflate: Inflate<VB>
@@ -30,9 +38,21 @@ abstract class BaseFragment<VB : ViewBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         initUi()
         initObservers()
+
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                onFragmentStarted()
+            }
+        }
+
     }
+
+
 
 
     override fun showCustomDialog(
@@ -59,6 +79,10 @@ abstract class BaseFragment<VB : ViewBinding>(
         dialog.show()
         val messageTextView = dialogView.tvMessage
         messageTextView.text = message
+    }
+
+    open suspend fun onFragmentStarted() {
+
     }
 
     override fun onDestroyView() {
