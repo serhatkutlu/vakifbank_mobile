@@ -19,5 +19,6 @@
     <string name="button_cepte_kazan_text">Cepte_Kazan</string>
     <string name="button_qr_transaction_text">Karekod İşlemleri</string>
 
+    <string name="this_feature_not_developed_yet">bu özellik daha geliştirilmedi</string>
 
 </resources>

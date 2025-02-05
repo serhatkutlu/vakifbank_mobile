@@ -4,12 +4,18 @@ import com.example.ui.base.BaseFragment
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
+import androidx.fragment.app.viewModels
 import com.example.login.databinding.FragmentCommercialBinding
+import com.example.login.model.UserInformation
+import com.example.login.presentation.state_event_effect.loginevent.LoginEvent
+import com.example.login.presentation.viewmodel.LoginViewModel
 import com.example.login.util.Constants
 
 
 class CommercialFragment :
     BaseFragment<FragmentCommercialBinding>(FragmentCommercialBinding::inflate) {
+
+    private val viewmodel by viewModels<LoginViewModel>({ requireParentFragment() })
 
     private val filterArrayCustomerNumber =
         arrayOf<InputFilter>(InputFilter.LengthFilter(Constants.COMMERCIAL_CUSTOMER_NUMBER_MAX_LENGTH))
@@ -19,9 +25,8 @@ class CommercialFragment :
         arrayOf<InputFilter>(InputFilter.LengthFilter(Constants.COMMERCIAL_PASSWORD_MAX_LENGTH))
 
 
-
-    private var CustomerIdIsValidate = false
-    private var UserCodeIsValidate = false
+    private var customerIdIsValidate = false
+    private var userCodeIsValidate = false
     private var passwordIsValidate = false
     private var isPasswordChanged = false
     private var isButtonLocked = false
@@ -32,6 +37,22 @@ class CommercialFragment :
         binding.tilUserCode.filters = filterArrayUerCode
         binding.tilPassword.filters = filterArrayPassword
 
+        initOnClickListeners()
+
+    }
+
+    private fun initOnClickListeners() {
+        binding.buttonContinue.setOnClickListener { loginOnClick() }
+    }
+
+    private fun loginOnClick() {
+        val userInformation = UserInformation.Commercial(
+            binding.tilCustomerNumber.text.toString().toLong(),
+            binding.tilUserCode.text.toString().toLong(),
+            binding.tilPassword.text.toString()
+        )
+        viewmodel.setLoginStateUserInformation(userInformation)
+        viewmodel.setEvent(LoginEvent.LoginClicked)
     }
 
     private fun initTextOnChange() {
@@ -57,10 +78,12 @@ class CommercialFragment :
         }
 
         override fun afterTextChanged(s: Editable?) {
-            CustomerIdIsValidate = (s?.length ?: 0) >= Constants.COMMERCIAL_CUSTOMER_NUMBER_MIN_LENGTH
+            customerIdIsValidate =
+                (s?.length ?: 0) >= Constants.COMMERCIAL_CUSTOMER_NUMBER_MIN_LENGTH
             checkIsValidate()
         }
     }
+
     private fun UserCodeTextWatcher() = object : TextWatcher {
         override fun beforeTextChanged(
             s: CharSequence?,
@@ -74,10 +97,11 @@ class CommercialFragment :
         }
 
         override fun afterTextChanged(s: Editable?) {
-            UserCodeIsValidate = (s?.length ?: 0) >= Constants.COMMERCIAL_USER_CODE_MIN_LENGTH
+            userCodeIsValidate = (s?.length ?: 0) >= Constants.COMMERCIAL_USER_CODE_MIN_LENGTH
             checkIsValidate()
         }
     }
+
     private fun passwordTextWatcher() = object : TextWatcher {
         override fun beforeTextChanged(
             s: CharSequence?,
@@ -89,7 +113,7 @@ class CommercialFragment :
             if (count > 0 && after == 0 && !isPasswordChanged) {
                 isButtonLocked = true
                 passwordIsValidate = false
-                isPasswordChanged=true
+                isPasswordChanged = true
                 checkIsValidate()
                 binding.tilPassword.text = null
             }
@@ -109,9 +133,9 @@ class CommercialFragment :
     }
 
     private fun checkIsValidate() {
-        binding.buttonContinue.isEnabled = CustomerIdIsValidate&&UserCodeIsValidate&&passwordIsValidate
+        binding.buttonContinue.isEnabled =
+            customerIdIsValidate && userCodeIsValidate && passwordIsValidate
     }
-
 
 
 }

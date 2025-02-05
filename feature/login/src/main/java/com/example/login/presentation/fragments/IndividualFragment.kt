@@ -4,13 +4,20 @@ import com.example.ui.base.BaseFragment
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
+import androidx.fragment.app.viewModels
 
 import com.example.login.databinding.FragmentIndividualBinding
+import com.example.login.model.UserInformation
+import com.example.login.presentation.state_event_effect.loginevent.LoginEvent
+import com.example.login.presentation.viewmodel.LoginViewModel
 import com.example.login.util.Constants
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
+class IndividualFragment() :
+    BaseFragment<FragmentIndividualBinding>(FragmentIndividualBinding::inflate) {
 
-class IndividualFragment(): BaseFragment<FragmentIndividualBinding>(FragmentIndividualBinding::inflate) {
-
+    private val viewmodel by viewModels<LoginViewModel>({ requireParentFragment() })
 
     private var idIsValidate = false
     private var passwordIsValidate = false
@@ -26,11 +33,25 @@ class IndividualFragment(): BaseFragment<FragmentIndividualBinding>(FragmentIndi
         initTextOnChange()
         binding.tilId.filters = filterArrayId
         binding.tilPassword.filters = filterArrayPassword
+        initOnClickListeners()
+    }
+
+    private fun initOnClickListeners() {
+        binding.button.setOnClickListener { loginOnClick() }
+    }
+
+    private fun loginOnClick() {
+        val userInformation= UserInformation.Retail(
+            binding.tilId.text.toString().toLong(),
+            binding.tilPassword.text.toString()
+        )
+        viewmodel.setLoginStateUserInformation(userInformation)
+        viewmodel.setEvent(LoginEvent.LoginClicked)
     }
 
     private fun initTextOnChange() {
 
-        binding.tilId.addTextChangedListener(IdTextWatcher())
+        binding.tilId.addTextChangedListener(idTextWatcher())
         binding.tilPassword.addTextChangedListener(passwordTextWatcher())
 
     }
@@ -40,12 +61,12 @@ class IndividualFragment(): BaseFragment<FragmentIndividualBinding>(FragmentIndi
     }
 
 
-    private fun checkIsValide() {
+    private fun checkIsValidate() {
         binding.button.isEnabled = idIsValidate && passwordIsValidate
     }
 
 
-    private fun IdTextWatcher() = object : TextWatcher {
+    private fun idTextWatcher() = object : TextWatcher {
         override fun beforeTextChanged(
             s: CharSequence?,
             start: Int,
@@ -59,7 +80,7 @@ class IndividualFragment(): BaseFragment<FragmentIndividualBinding>(FragmentIndi
 
         override fun afterTextChanged(s: Editable?) {
             idIsValidate = (s?.length ?: 0) >= Constants.INDIVIDUAL_CUSTOMER_OR_TC_ID__MIN_LENGTH
-            checkIsValide()
+            checkIsValidate()
         }
     }
 
@@ -74,8 +95,8 @@ class IndividualFragment(): BaseFragment<FragmentIndividualBinding>(FragmentIndi
             if (count > 0 && after == 0 && !isPasswordChanged) {
                 isButtonLocked = true
                 passwordIsValidate = false
-                isPasswordChanged=true
-                checkIsValide()
+                isPasswordChanged = true
+                checkIsValidate()
                 binding.tilPassword.text = null
             }
         }
@@ -87,7 +108,7 @@ class IndividualFragment(): BaseFragment<FragmentIndividualBinding>(FragmentIndi
         override fun afterTextChanged(s: Editable?) {
             if (!isButtonLocked) passwordIsValidate =
                 (s?.length ?: 0) >= Constants.INDIVIDUAL_PASSWORD_MIN_LENGTH
-            checkIsValide()
+            checkIsValidate()
             isPasswordChanged = false
 
         }

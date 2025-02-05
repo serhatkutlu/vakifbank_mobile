@@ -20,6 +20,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/til_customer_number"
             android:hint="@string/commercial_tab_hint_customer_Number"
+            android:inputType="number"
             android:textColorHint="@color/til_box_stroke_color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -35,6 +36,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/til_user_code"
             android:hint="@string/commercial_tab_hint_user_code"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>

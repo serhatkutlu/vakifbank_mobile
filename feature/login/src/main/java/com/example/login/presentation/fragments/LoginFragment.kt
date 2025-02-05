@@ -1,5 +1,6 @@
 package com.example.login.presentation.fragments
 
+import android.util.Log
 import androidx.fragment.app.viewModels
 import com.example.ui.base.BaseFragment
 
@@ -12,9 +13,13 @@ import com.example.login.databinding.FragmentLoginBinding
 import com.example.login.decoration.StoryRvItemDecoration
 import com.example.login.presentation.adapter.PagerAdapter
 import com.example.login.presentation.adapter.StoryRvAdapter
+import com.example.login.presentation.state_event_effect.logineffect.LoginEffect
+import com.example.login.presentation.state_event_effect.loginevent.LoginEvent
 import com.example.login.presentation.viewmodel.LoginViewModel
 import com.example.ui.extensions.extension.gone
+import com.example.ui.extensions.extension.launchAndRepeatWithViewLifecycle
 import com.example.ui.extensions.extension.visible
+
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +30,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
 
     private val storyRvAdapter by lazy {
-            StoryRvAdapter(onclick =::StoryOnclick )
+        StoryRvAdapter(onclick = ::storyOnclick)
 
     }
 
@@ -33,25 +38,27 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     private val pagerAdapter by lazy {
         PagerAdapter(this)
     }
+
     override fun initUi() {
         initStoryRv()
         initViewPager()
     }
 
     override fun initObservers() {
-
+        collectState()
+        collectEffect()
     }
 
     private fun initViewPager() {
         binding.includeLoginMainView.apply {
-            vpPager.adapter=pagerAdapter
-            TabLayoutMediator(tlTab,vpPager){tab,position->
-                when(position){
-                    0->tab.text=getText(R.string.individual_tab_name)
-                    1->tab.text=getText(R.string.commercial_tab_name)
+            vpPager.adapter = pagerAdapter
+            TabLayoutMediator(tlTab, vpPager) { tab, position ->
+                when (position) {
+                    0 -> tab.text = getText(R.string.individual_tab_name)
+                    1 -> tab.text = getText(R.string.commercial_tab_name)
                 }
 
-                }.attach()
+            }.attach()
             vpPager.registerOnPageChangeCallback(onPageChangeCallBack(vpPager))
         }
 
@@ -59,38 +66,63 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private fun initStoryRv() {
         binding.includeLoginMainView.rvStory.apply {
-            adapter=storyRvAdapter
+            adapter = storyRvAdapter
             setHasFixedSize(true)
-            layoutManager=
+            layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             addItemDecoration(StoryRvItemDecoration(50))
         }
     }
 
-    override suspend fun onFragmentStarted() {
-        viewmodel.loginState.collect{loginState->
-            with(loginState.storyData){
-                when(this){
-                    is  ResourceUi.Success ->{
-                        binding.progressBar.gone()
-                        data?.let {
-                            storyRvAdapter.updateList(it)
+    private fun collectState() {
+        launchAndRepeatWithViewLifecycle {
+            viewmodel.loginState.collect { loginState ->
+                with(loginState.storyData) {
+                    when (this) {
+                        is ResourceUi.Success -> {
+                            binding.progressBar.gone()
+                            data?.let {
+                                storyRvAdapter.updateList(it)
+                            }
                         }
-                    }
-                    is ResourceUi.Error->{
-                        binding.progressBar.gone()
 
-                        showCustomDialog(message = error?.asString(requireContext())?:"")
-                    }
-                    is ResourceUi.Loading->{
-                        binding.progressBar.visible()
-                    }
-                    is ResourceUi.Idle->{
-                        binding.progressBar.gone()
+                        is ResourceUi.Loading -> {
+                            binding.progressBar.visible()
+                        }
+
+                        is ResourceUi.Idle -> {
+                            binding.progressBar.gone()
+                        }
                     }
                 }
             }
+        }
+    }
 
+    private fun collectEffect() {
+        launchAndRepeatWithViewLifecycle {
+            viewmodel.effect.collect {
+                when (it) {
+                    is LoginEffect.ShowAlert -> {
+                        showCustomDialog(it.message?.asString(requireContext()) ?: "")
+                    }
+
+                    is LoginEffect.NavigateDontHaveAccountFragment -> {
+
+                    }
+
+                    is LoginEffect.NavigateProfileFragment -> {
+
+                    }
+
+                    is LoginEffect.ChangeLanguage -> {
+
+                    }
+                    is LoginEffect.NavigateStoryFragment -> {
+                    }
+
+                }
+            }
         }
     }
 
@@ -106,7 +138,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             }
         }
 
-    private fun StoryOnclick(storyUiData: StoryUiData){
-
+    private fun storyOnclick(storyUiData: StoryUiData) {
+        viewmodel.setEvent(LoginEvent.StoryClicked(storyUiData))
     }
 }
