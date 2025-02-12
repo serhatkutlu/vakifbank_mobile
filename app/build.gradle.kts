@@ -47,8 +47,10 @@ dependencies {
     implementation(project(":core:navigation"))
     implementation(project(":core:network"))
     implementation(project(":core:ui"))
+    implementation(project(":core:domain"))
     implementation(project(":feature:splash"))
     implementation(project(":feature:login"))
+    implementation(project(":feature:story"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

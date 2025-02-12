@@ -10,8 +10,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.datasource.exchangedatasource.abstraction.ExchangeRatesDataSource
+import com.example.login.presentation.fragments.LoginFragment
 import com.example.ui.customviews.CustomBottomNavigationView
+import com.example.ui.extensions.extension.gone
+import com.example.ui.extensions.extension.visible
+import com.example.vakifbank_mobile.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -22,31 +28,52 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var datasource: ExchangeRatesDataSource
 
+    private lateinit var navController: NavController
 
 
+
+    private lateinit var binding: ActivityMainBinding
 
 
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding=ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val customView = findViewById<CustomBottomNavigationView>(R.id.tata)
+
 
 
         val menu: Menu = MenuBuilder(this)
         MenuInflater(this).inflate(com.example.ui.R.menu.bottom_navigation_menu, menu) //
 
-        customView.customBottomNavigation?.setMenu(menu)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView_main) as NavHostFragment
+        navController = navHostFragment.navController
 
-        customView.customBottomNavigation?.setOnItemSelectedListener {
+        navHostFragment.navController.addOnDestinationChangedListener{ _, destination,_ ->
+            when (destination.id) {
+                com.example.navigation.R.id.storyFragment -> {
+                    binding.customBottomNavigation.gone()
+                }
+                else -> {
+                    binding.customBottomNavigation.visible()
+
+                }
+            }
+        }
+
+        binding.customBottomNavigation.customBottomNavigation?.setMenu(menu)
+
+        binding.customBottomNavigation.customBottomNavigation?.setOnItemSelectedListener {
             when (it) {
                 com.example.ui.R.id.bottom_fast_transactions -> {
+
                 }
                 com.example.ui.R.id.bottom_market_knowledge -> {
                 }

@@ -23,7 +23,7 @@
 
 
     <com.example.ui.customviews.CustomBottomNavigationView
-        android:id="@+id/tata"
+        android:id="@+id/custom_bottom_navigation"
         app:menu="@menu/bottom_navigation_menu"
         android:layout_width="match_parent"
         android:layout_height="100dp"
