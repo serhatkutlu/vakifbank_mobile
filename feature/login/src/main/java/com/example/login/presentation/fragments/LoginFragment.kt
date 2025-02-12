@@ -2,10 +2,14 @@ package com.example.login.presentation.fragments
 
 import android.util.Log
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.ui.base.BaseFragment
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.example.common.extension.Extension
+import com.example.common.extension.Extension.changeAppLanguage
+import com.example.common.extension.Extension.getAppLanguage
 import com.example.common.resource.ResourceUi
 import com.example.domain.model.story.StoryUiData
 import com.example.login.R
@@ -19,8 +23,8 @@ import com.example.login.presentation.viewmodel.LoginViewModel
 import com.example.ui.extensions.extension.gone
 import com.example.ui.extensions.extension.launchAndRepeatWithViewLifecycle
 import com.example.ui.extensions.extension.visible
-
 import com.google.android.material.tabs.TabLayoutMediator
+
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,6 +32,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private val viewmodel by viewModels<LoginViewModel>()
 
+    private var nextLanguage: Extension.Language = Extension.Language.ENGLISH
 
     private val storyRvAdapter by lazy {
         StoryRvAdapter(onclick = ::storyOnclick)
@@ -35,13 +40,22 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     }
 
 
-    private val pagerAdapter by lazy {
-        PagerAdapter(this)
-    }
-
     override fun initUi() {
+        initToolBar()
         initStoryRv()
         initViewPager()
+        initOnClickListener()
+    }
+
+    private fun initToolBar() {
+        nextLanguage = requireContext().getAppLanguage().getNextLanguage()
+        binding.includeLoginToolbar.tvLanguage.text = nextLanguage.code
+    }
+
+    private fun initOnClickListener() {
+        binding.includeLoginToolbar.tvLanguage.setOnClickListener {
+            requireContext().changeAppLanguage(nextLanguage)
+        }
     }
 
     override fun initObservers() {
@@ -51,7 +65,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private fun initViewPager() {
         binding.includeLoginMainView.apply {
-            vpPager.adapter = pagerAdapter
+            vpPager.adapter = PagerAdapter(this@LoginFragment)
+
             TabLayoutMediator(tlTab, vpPager) { tab, position ->
                 when (position) {
                     0 -> tab.text = getText(R.string.individual_tab_name)
@@ -118,7 +133,14 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                     is LoginEffect.ChangeLanguage -> {
 
                     }
+
                     is LoginEffect.NavigateStoryFragment -> {
+                        findNavController().navigate(
+                            LoginFragmentDirections.actionLoginFragmentToStoryFragment(
+                                it.storyUiData.toTypedArray(),
+                                it.ordinal
+                            )
+                        )
                     }
 
                 }
@@ -138,7 +160,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             }
         }
 
-    private fun storyOnclick(storyUiData: StoryUiData) {
-        viewmodel.setEvent(LoginEvent.StoryClicked(storyUiData))
+    private fun storyOnclick(ordinal: Int) {
+        viewmodel.setEvent(LoginEvent.StoryClicked(ordinal))
     }
 }

@@ -6,7 +6,7 @@ import com.example.domain.model.story.StoryUiData
 sealed interface LoginEffect {
     data class ShowAlert(val message: UiText?) : LoginEffect
     data object NavigateDontHaveAccountFragment : LoginEffect
-    data class NavigateStoryFragment(val storyUiData: StoryUiData):LoginEffect
+    data class NavigateStoryFragment(val ordinal:Int, val storyUiData: List<StoryUiData>):LoginEffect
     data object NavigateProfileFragment : LoginEffect
     class ChangeLanguage(val language: String) : LoginEffect
 }

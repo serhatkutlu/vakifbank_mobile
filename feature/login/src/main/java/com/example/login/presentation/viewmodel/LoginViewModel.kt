@@ -98,7 +98,7 @@ class LoginViewModel @Inject constructor(private val getStoryDataUseCaseImplemen
                     }
 
                     is LoginEvent.StoryClicked -> {
-                        _effect.emit(LoginEffect.NavigateStoryFragment(it.storyUiData))
+                        _effect.emit(LoginEffect.NavigateStoryFragment(it.ordinal, _loginState.value.storyData.data ?: listOf()))
                     }
 
                 }

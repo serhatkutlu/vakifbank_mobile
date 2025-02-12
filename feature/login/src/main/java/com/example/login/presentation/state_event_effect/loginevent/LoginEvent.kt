@@ -4,7 +4,7 @@ import com.example.domain.model.story.StoryUiData
 
 sealed interface LoginEvent{
     data object LoginClicked : LoginEvent
-    data class StoryClicked(val storyUiData: StoryUiData): LoginEvent
+    data class StoryClicked(val  ordinal: Int): LoginEvent
     data object DontHaveAccountClicked : LoginEvent
     data object ProfileClicked : LoginEvent
     class SwapLanguageClicked(val language: String) : LoginEvent
