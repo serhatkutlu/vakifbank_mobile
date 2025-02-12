@@ -23,10 +23,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class CustomBottomNavigationView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
-    private var bottomNavigationView: BottomNavigationView? = null
      var customBottomNavigation: CustomBottomNavigation? = null
-    private var floatingActionButton: FloatingActionButton? = null
-    private val transparentColor = ContextCompat.getColor(context, R.color.transparent)
+
 
     init {
         removeAllViews()
@@ -44,12 +42,12 @@ class CustomBottomNavigationView(context: Context, attrs: AttributeSet?) : Frame
     }
 
     private val paint = Paint().apply {
-        color = 0xFFFFFFFF.toInt() // Mor bir renk
+        color = 0xFFFFFFFF.toInt()
         style = Paint.Style.FILL
         isAntiAlias = true
     }
     private val paint2 = Paint().apply {
-        color = 0xFF000000.toInt() // Mor bir renk
+        color = 0xFF000000.toInt()
         style = Paint.Style.STROKE
         strokeWidth = 2f
         isAntiAlias = true
@@ -110,31 +108,5 @@ class CustomBottomNavigationView(context: Context, attrs: AttributeSet?) : Frame
         }
     }
 
-//    private fun createCurvePath(width: Float, curveHeight: Float = 100f, margin: Float = 5f): Path {
-//        return Path().apply {
-//            moveTo(0f, curveHeight)
-//
-//            lineTo(width / 2 - 200, curveHeight)
-//
-//
-//            cubicTo(
-//                width / 2 - 130,
-//                curveHeight,
-//                width / 2 - 150,
-//                0f + margin,
-//                width / 2,
-//                0f + margin
-//            )
-//            cubicTo(
-//                width / 2 + 150,
-//                0f + margin,
-//                width / 2 + 150,
-//                curveHeight,
-//                width / 2 + 200,
-//                curveHeight
-//            )
-//
-//            lineTo(width, curveHeight)
-//        }
-//    }
+
 }

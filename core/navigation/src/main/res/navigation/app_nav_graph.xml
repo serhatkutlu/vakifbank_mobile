@@ -8,7 +8,26 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.splash.presentation.SplashFragment"
-         />
+         >
+        <action
+            android:id="@+id/action_loginFragment_to_storyFragment"
+            app:destination="@id/storyFragment" >
+
+        </action>
+
+    </fragment>
+
+
+    <fragment android:id="@+id/storyFragment"
+        android:name="com.example.story.presentation.fragments.StoryFragment">
+
+        <argument
+            android:name="story_data"
+            app:argType="com.example.domain.model.story.StoryUiData[]" />
+        <argument
+            android:name="ordinal"
+            app:argType="java.lang.Integer" />
+    </fragment>
 
     <fragment
         android:id="@+id/loginFragment"

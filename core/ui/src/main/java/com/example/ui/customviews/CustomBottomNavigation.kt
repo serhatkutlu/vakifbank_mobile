@@ -10,6 +10,7 @@ import android.view.Menu
 
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 
 import com.bumptech.glide.Glide
 import com.example.ui.R
@@ -19,6 +20,8 @@ class CustomBottomNavigation(context: Context, attrs: AttributeSet?) :
     LinearLayout(context, attrs) {
 
 
+    private val handler = Handler(Looper.getMainLooper())
+    private var runnable: Runnable? = null
 
     init {
         orientation = HORIZONTAL
@@ -43,16 +46,15 @@ class CustomBottomNavigation(context: Context, attrs: AttributeSet?) :
                     .into(imageView)
 
 
-                Handler(
-                    Looper.getMainLooper()
-                ).postDelayed({
-                    Glide.with(this)
-                        .load(R.drawable.vibi)
-                        .into(imageView)
-                }, 2000)
-
-
-
+                runnable = Runnable {
+                    if (context is AppCompatActivity && !(context as AppCompatActivity).isDestroyed && !(context as AppCompatActivity).isFinishing) {
+                        Glide.with(context)
+                            .load(R.drawable.vibi)
+                            .into(imageView)
+                    }
+                }
+                runnable?.run()
+                runnable?.let { handler.postDelayed(it, 2000) }
 
                 imageView.layoutParams = layoutParams
                 addView(imageView)
@@ -72,7 +74,6 @@ class CustomBottomNavigation(context: Context, attrs: AttributeSet?) :
             }
 
 
-
         }
     }
 
@@ -81,6 +82,11 @@ class CustomBottomNavigation(context: Context, attrs: AttributeSet?) :
 
     fun setOnItemSelectedListener(listener: (Int) -> Unit) {
         onItemSelectedListener = listener
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        runnable?.let { handler.removeCallbacks(it) }
     }
 
 }

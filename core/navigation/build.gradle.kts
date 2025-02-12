@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-}
+    id("androidx.navigation.safeargs")}
 
 android {
     namespace = "com.example.navigation"
@@ -34,6 +34,7 @@ android {
 
 dependencies {
 
+    implementation(project(":core:domain"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

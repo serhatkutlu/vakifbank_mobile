@@ -43,13 +43,6 @@ abstract class BaseFragment<VB : ViewBinding>(
         initUi()
         initObservers()
 
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                onFragmentStarted()
-            }
-        }
-
     }
 
 
@@ -81,9 +74,7 @@ abstract class BaseFragment<VB : ViewBinding>(
         messageTextView.text = message
     }
 
-    open suspend fun onFragmentStarted() {
 
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
