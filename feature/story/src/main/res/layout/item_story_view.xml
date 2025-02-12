@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/light_gray">
+
+
+    <ProgressBar
+        android:id="@+id/storyProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:indeterminate="false"
+        android:progressTint="@color/white"
+        style="?android:attr/progressBarStyleHorizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="spk mevduat"
+        android:textAppearance="@style/story_title_text_appearance"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/storyProgressBar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/button_close"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/baseline_close_24"
+        android:tint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/storyProgressBar"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="15dp"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_story_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="80dp"
+        tools:layout_editor_absoluteY="80dp"
+        android:visibility="invisible"
+        android:elevation="-1dp"
+        android:scaleType="fitXY"
+        tools:src="@color/orange" />
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/vv_story_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="-1dp"
+        android:backgroundTint="@color/light_gray"
+        android:visibility="invisible"/>
+
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_up_icon"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:src="@drawable/baseline_keyboard_arrow_up_24"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/tv_swipe_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_swipe_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/story_description_text_appearance"
+        android:text="Detaylı incele"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_story_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:indeterminateTint="@color/orange"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
