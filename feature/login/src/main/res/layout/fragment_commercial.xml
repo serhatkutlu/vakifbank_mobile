@@ -18,7 +18,9 @@
         android:layout_marginVertical="10dp"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:hint="test"
+            android:id="@+id/til_customer_number"
+            android:hint="@string/commercial_tab_hint_customer_Number"
+            android:inputType="number"
             android:textColorHint="@color/til_box_stroke_color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -32,7 +34,9 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:hint="test"
+            android:id="@+id/til_user_code"
+            android:hint="@string/commercial_tab_hint_user_code"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -44,17 +48,18 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:hint="test"
+            android:id="@+id/til_password"
+            android:hint="@string/commercial_tab_hint_digital_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-
+        android:id="@+id/button_continue"
         style="@style/button_orange_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="okey"/>
+        android:text="@string/commercial_tab_button_text"/>
 
 </LinearLayout>

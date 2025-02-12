@@ -9,6 +9,14 @@
     </style>
 
 
+<style name="dont_have_password_text_appearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textStyle"> normal</item>
+    </style>
+
+
     <style name="text_input_layout_style" parent="ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox">
         <item name="boxStrokeColor">@color/til_box_stroke_color</item>
     <item name="hintTextColor">@color/orange</item>
