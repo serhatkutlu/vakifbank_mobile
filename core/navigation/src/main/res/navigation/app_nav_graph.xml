@@ -2,18 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:app="http://schemas.android.com/apk/res-auto"
              android:id="@+id/app_nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/loginFragment">
 
 
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.splash.presentation.SplashFragment"
          >
-        <action
-            android:id="@+id/action_loginFragment_to_storyFragment"
-            app:destination="@id/storyFragment" >
 
-        </action>
 
     </fragment>
 
@@ -28,6 +24,19 @@
             android:name="ordinal"
             app:argType="java.lang.Integer" />
     </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.login.presentation.fragments.LoginFragment"
+         >
+        <action
+            android:id="@+id/action_loginFragment_to_storyFragment"
+            app:destination="@id/storyFragment" >
+
+        </action>
+    </fragment>
+    <fragment android:id="@+id/marketFragment"
+        android:name="com.example.marketknowledge.presentation.fragment.MarketFragment"/>
 
 
 </navigation>

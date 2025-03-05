@@ -10,7 +10,7 @@
 
 
     <style name="bottom_nav_text_appearance" parent="TextAppearance.AppCompat">
-        <item name="android:textColor">@color/darkgrey</item>
+        <item name="android:textColor">@color/dark_grey</item>
         <item name="android:textSize">10sp</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textStyle">bold</item>

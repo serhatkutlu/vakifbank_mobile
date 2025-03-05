@@ -18,7 +18,7 @@ android {
 
         buildConfigField("String", "BASE_URL",  "\"https://openexchangerates.org/api/\"")
         buildConfigField("String", "STORY_BASE_URL",  "\"https://raw.githubusercontent.com/serhatkutlu/\"")
-        buildConfigField("String", "API_KEY", "\"${project.properties["apiKey"]}\"")
+        buildConfigField("String", "API_KEY", "\"${project.properties["API_KEY"]}\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
