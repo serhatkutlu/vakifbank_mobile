@@ -51,6 +51,7 @@ dependencies {
     implementation(project(":feature:splash"))
     implementation(project(":feature:login"))
     implementation(project(":feature:story"))
+    implementation(project(":feature:marketknowledge"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

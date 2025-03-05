@@ -13,8 +13,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.datasource.exchangedatasource.abstraction.ExchangeRatesDataSource
-import com.example.login.presentation.fragments.LoginFragment
-import com.example.ui.customviews.CustomBottomNavigationView
 import com.example.ui.extensions.extension.gone
 import com.example.ui.extensions.extension.visible
 import com.example.vakifbank_mobile.databinding.ActivityMainBinding
@@ -60,7 +58,10 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 com.example.navigation.R.id.storyFragment -> {
                     binding.customBottomNavigation.gone()
+                }com.example.navigation.R.id.marketFragment -> {
+                    binding.customBottomNavigation.gone()
                 }
+
                 else -> {
                     binding.customBottomNavigation.visible()
 
@@ -76,6 +77,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 com.example.ui.R.id.bottom_market_knowledge -> {
+                    navController.navigate(com.example.navigation.R.id.marketFragment)
                 }
 
                 com.example.ui.R.id.bottom_calculation_tools -> {
