@@ -31,7 +31,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/darkgrey"/>
+                android:background="@color/dark_grey"/>
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tl_tab"
                 android:background="@color/white"

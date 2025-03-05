@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 
 import com.example.story.databinding.FragmentStoryBinding
 import com.example.story.presentation.adapter.StoryAdapter
+import com.example.story.presentation.viewmodel.StoryEffect
 import com.example.story.presentation.viewmodel.StoryViewModel
 import com.example.story.vp2transformer.CubePageTransformer
 import com.example.ui.base.BaseFragment
@@ -52,14 +53,14 @@ class StoryFragment : BaseFragment<FragmentStoryBinding>(FragmentStoryBinding::i
         launchAndRepeatWithViewLifecycle {
             viewmodel.effect.collect {
                 when (it) {
-                    is StoryViewModel.Companion.StoryEffect.NextPage -> {
+                    is StoryEffect.NextPage -> {
                         nextPage()
                     }
 
-                    is StoryViewModel.Companion.StoryEffect.PreviousPage -> {
+                    is StoryEffect.PreviousPage -> {
                         previousPage()
                     }
-                    is StoryViewModel.Companion.StoryEffect.Close -> {
+                    is StoryEffect.Close -> {
                         findNavController().popBackStack()
                     }
                     else -> {}

@@ -7,6 +7,7 @@ import android.view.MotionEvent
 import android.view.ViewConfiguration
 import android.widget.FrameLayout
 import android.widget.ProgressBar
+import com.example.domain.model.story.StoryUiData
 import com.example.story.databinding.ItemStoryViewBinding
 import com.example.story.util.Constants
 import com.example.ui.extensions.extension.gone
@@ -63,6 +64,15 @@ class StoryView(context: Context, attrs: AttributeSet? = null) : FrameLayout(con
         binding?.buttonClose?.setOnClickListener { listener?.onSwipeDown() }
     }
 
+    fun initUi(storyUiData: StoryUiData){
+        if (storyUiData.isVideo){
+            initVideoView(storyUiData.contentUrl)
+        }else{
+            initImageView(storyUiData.contentUrl)
+        }
+
+        binding?.textView?.text=storyUiData.title
+    }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
