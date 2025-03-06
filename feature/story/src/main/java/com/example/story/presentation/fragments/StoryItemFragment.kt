@@ -1,6 +1,5 @@
 package com.example.story.presentation.fragments
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -9,6 +8,7 @@ import androidx.fragment.app.viewModels
 import com.example.domain.model.story.StoryUiData
 import com.example.story.databinding.FragentStoryItemBinding
 import com.example.story.presentation.customview.storyview.StoryViewListener
+import com.example.story.presentation.viewmodel.StoryEvent
 import com.example.story.presentation.viewmodel.StoryViewModel
 import com.example.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,23 +29,13 @@ class StoryItemFragment:BaseFragment<FragentStoryItemBinding>(FragentStoryItemBi
         super.onViewCreated(view, savedInstanceState)
         args=arguments?.getParcelable(STORY_DATA_KEY)
         args?.let {
-            if (it.isVideo){
-                initVideoView(it.contentUrl)
-            }else{
-                initImageView(it.contentUrl)
-            }
+           binding.storyView.initUi(it)
+
         }
 
         binding.storyView.listener=this
     }
 
-    private fun initImageView(contentUrl: String) {
-        binding.root.initImageView(contentUrl)
-    }
-
-    private fun initVideoView(contentUrl: String) {
-        binding.root.initVideoView(contentUrl)
-    }
 
     override fun initUi() {
 
@@ -106,13 +96,13 @@ class StoryItemFragment:BaseFragment<FragentStoryItemBinding>(FragentStoryItemBi
     }
 
     override fun onSwipeDown() {
-        viewmodel.setEvent(StoryViewModel.Companion.StoryEvent.OnSwipeDown)
+        viewmodel.setEvent(StoryEvent.OnSwipeDown)
     }
 
     override fun onClickLeft() {
-        viewmodel.setEvent(StoryViewModel.Companion.StoryEvent.PreviousClicked)    }
+        viewmodel.setEvent(StoryEvent.PreviousClicked)    }
 
     override fun onClickRight() {
-        viewmodel.setEvent(StoryViewModel.Companion.StoryEvent.NextClicked)
+        viewmodel.setEvent(StoryEvent.NextClicked)
     }
 }

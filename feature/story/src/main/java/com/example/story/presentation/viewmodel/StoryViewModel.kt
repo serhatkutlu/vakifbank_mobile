@@ -54,19 +54,17 @@ class StoryViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    companion object{
-        sealed interface StoryEvent {
-            data object NextClicked : StoryEvent
-            data object PreviousClicked : StoryEvent
-            data object OnSwipeUp : StoryEvent
-            data object OnSwipeDown : StoryEvent
+}
 
-        }
-        sealed interface StoryEffect{
-            data object NextPage : StoryEffect
-            data object PreviousPage : StoryEffect
-            data object Close : StoryEffect
-        }
-    }
+sealed interface StoryEvent {
+    data object NextClicked : StoryEvent
+    data object PreviousClicked : StoryEvent
+    data object OnSwipeUp : StoryEvent
+    data object OnSwipeDown : StoryEvent
 
+}
+sealed interface StoryEffect{
+    data object NextPage : StoryEffect
+    data object PreviousPage : StoryEffect
+    data object Close : StoryEffect
 }
