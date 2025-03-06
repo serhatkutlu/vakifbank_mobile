@@ -9,11 +9,7 @@
         android:id="@+id/splashFragment"
         android:name="com.example.splash.presentation.SplashFragment"
          >
-        <action
-            android:id="@+id/action_loginFragment_to_storyFragment"
-            app:destination="@id/storyFragment" >
 
-        </action>
 
     </fragment>
 
@@ -32,7 +28,15 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.login.presentation.fragments.LoginFragment"
-         />
+         >
+        <action
+            android:id="@+id/action_loginFragment_to_storyFragment"
+            app:destination="@id/storyFragment" >
+
+        </action>
+    </fragment>
+    <fragment android:id="@+id/marketFragment"
+        android:name="com.example.marketknowledge.presentation.fragment.MarketFragment"/>
 
 
 </navigation>

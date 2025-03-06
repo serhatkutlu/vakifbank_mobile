@@ -8,8 +8,6 @@ sealed class ResourceUi<T>(
     class Idle<T> : ResourceUi<T>()
 
     class Loading<T> : ResourceUi<T>()
-
-
 }
 
 
