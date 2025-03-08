@@ -12,6 +12,7 @@
         android:id="@+id/cv_story_image"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:backgroundTint="@color/white"
         tools:theme="@style/Base.Theme.Vakifbank_mobile"
         app:strokeColor="@color/orange"
         app:strokeWidth="2dp"

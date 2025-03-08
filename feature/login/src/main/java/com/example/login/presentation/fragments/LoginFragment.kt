@@ -2,6 +2,7 @@ package com.example.login.presentation.fragments
 
 import android.util.Log
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.ui.base.BaseFragment
 
@@ -23,6 +24,7 @@ import com.example.login.presentation.viewmodel.LoginViewModel
 import com.example.ui.extensions.extension.gone
 import com.example.ui.extensions.extension.launchAndRepeatWithViewLifecycle
 import com.example.ui.extensions.extension.visible
+import com.example.util.NavOption
 import com.google.android.material.tabs.TabLayoutMediator
 
 import dagger.hilt.android.AndroidEntryPoint
@@ -139,7 +141,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                             LoginFragmentDirections.actionLoginFragmentToStoryFragment(
                                 it.storyUiData.toTypedArray(),
                                 it.ordinal
-                            )
+                            ), NavOption.upAnim
                         )
                     }
 
