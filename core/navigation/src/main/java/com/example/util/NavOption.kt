@@ -18,4 +18,10 @@ object NavOption {
         .setPopExitAnim(R.anim.slide_down_out)
         .build()
 
+    fun  navOptionPopUp(targetdestination:Int) = NavOptions.Builder()
+        .setPopUpTo(targetdestination, true)
+        .setEnterAnim(R.anim.slide_in_right)
+        .setExitAnim(R.anim.slide_out_left)
+        .build()
+
 }
