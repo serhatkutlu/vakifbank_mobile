@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.common.resource.Resource
 import com.example.common.resource.ResourceUi
+import com.example.common.resource.UiText
 import com.example.domain.model.exchangerate.ExchangeRateCategory
 import com.example.domain.model.exchangerate.MarketData
 import com.example.domain.usecase.exchangerates.GetExchangeRatesDataUseCase
@@ -14,6 +15,9 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -31,6 +35,7 @@ class MarketKnowledgeViewModel @Inject constructor(private val getExchangeRatesD
 
     init {
         getExchangeRatesData()
+        collectEvent()
     }
 
     private fun getExchangeRatesData() {
@@ -54,12 +59,12 @@ class MarketKnowledgeViewModel @Inject constructor(private val getExchangeRatesD
                             })
                         }
 
-                        _state.update { it.copy(marketData = ResourceUi.Success(newList)) }
+                        _state.update { it.copy(marketData = ResourceUi.Success(newList), lastUpdateDate = getDate()) }
 
                     }
 
                     is Resource.Error -> {
-                        //state.update { it.copy(marketData = ResourceUi.Success(excangeRateData.error)) }
+                        _effect.emit(MarketEffect.showError(excangeRateData.error))
                     }
 
                     is Resource.Loading -> {
@@ -69,24 +74,43 @@ class MarketKnowledgeViewModel @Inject constructor(private val getExchangeRatesD
             }
         }
     }
+    fun setEvent(event: MarketEvent) {
+        viewModelScope.launch {
+            _event.emit(event)
+        }
+    }
+    private fun collectEvent() {
+        viewModelScope.launch {
+            _event.collect {
+                when(it){
+                    is MarketEvent.ClickRefresh->{
+                        getExchangeRatesData()
+                    }
+                }
+            }
+            }
+    }
+    private fun getDate():String{
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val formatted = dateFormat.format(calendar.time)
+        return formatted
+    }
 }
 
 sealed interface MarketEvent {
-    data object NextClicked : MarketEvent
-    data object PreviousClicked : MarketEvent
-    data object OnSwipeUp : MarketEvent
-    data object OnSwipeDown : MarketEvent
+    data object ClickRefresh : MarketEvent
 
 }
 
 sealed interface MarketEffect {
-    data object NextPage : MarketEffect
-    data object PreviousPage : MarketEffect
-    data object Close : MarketEffect
+    data class showError(val message: UiText?) : MarketEffect
+
 
 }
 
 
 data class MarketState(
-    val marketData: ResourceUi<List<MarketData>>
+    val marketData: ResourceUi<List<MarketData>>,
+    var lastUpdateDate: String = ""
 )

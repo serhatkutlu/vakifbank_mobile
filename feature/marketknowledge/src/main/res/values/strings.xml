@@ -3,5 +3,5 @@
     <string name="market_header_buy">Buy</string>
     <string name="market_header_sell">Sell</string>
     <string name="market_header_toolbar_text">Market Knowledge</string>
-
+    <string name="market_last_update_header">Last Update:%s</string>
 </resources>
