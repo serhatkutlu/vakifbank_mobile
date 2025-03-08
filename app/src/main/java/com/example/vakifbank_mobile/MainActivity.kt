@@ -15,6 +15,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.datasource.exchangedatasource.abstraction.ExchangeRatesDataSource
 import com.example.ui.extensions.extension.gone
 import com.example.ui.extensions.extension.visible
+import com.example.util.NavOption
 import com.example.vakifbank_mobile.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -77,7 +78,8 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 com.example.ui.R.id.bottom_market_knowledge -> {
-                    navController.navigate(com.example.navigation.R.id.marketFragment)
+                    navController.navigate(com.example.navigation.R.id.marketFragment,null,
+                        NavOption.rightAnim)
                 }
 
                 com.example.ui.R.id.bottom_calculation_tools -> {

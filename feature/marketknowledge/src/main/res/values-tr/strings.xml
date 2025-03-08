@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="market_header_toolbar_text">Market bilgisi</string>
+    <string name="market_header_buy">Alış</string>
+    <string name="market_header_sell">Satış</string>
+    <string name="market_last_update_header">Son güncelleme:%s</string>
+
+</resources>

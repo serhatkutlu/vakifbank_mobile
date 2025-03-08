@@ -4,7 +4,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="light_gray">#FFC4C4C4</color>">
-    <color name="darkgrey">#878787</color>
+    <color name="extra_light_gray">#f2f1ef</color>">
+    <color name="dark_grey">#878787</color>
+    <color name="extra_dark_grey">#383838</color>
     <color name="orange">#fcb100</color>
+    <color name="green">#11FF1A</color>
+    <color name="red">#FF0000</color>
+
+
 
 </resources>
