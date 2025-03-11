@@ -2,8 +2,12 @@
 # VakıfBank Mobile Application Prototype
 
 This project is a small prototype of the VakıfBank mobile application that I actively use. It has been developed with a multi-module structure following Clean Architecture principles. Due to time constraints, some fragments may still be under development.
-
+## Dependency graph
 ![Dependency graph](project-dependency-graph/output.svg)
+---
+## App Video
+[![Shorts Video](https://img.youtube.com/vi/hmPB7FN4ra8/0.jpg)](https://www.youtube.com/watch?v=hmPB7FN4ra8)
+
 ---
 
 ## Technologies Used
