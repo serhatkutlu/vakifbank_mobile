@@ -2,18 +2,32 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Vakifbank_mobile" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/extra_dark_grey</item>
+
     </style>
 
     <style name="Theme.Vakifbank_mobile" parent="Base.Theme.Vakifbank_mobile" />
 
 
 
+    <style name="main_activity_bg_style">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="custom_bottom_navigation_view_style">
+        <item name="lineColor">@color/black</item>
+        <item name="bgColor">@color/white</item>
+    </style>
     <style name="bottom_nav_text_appearance" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/dark_grey</item>
         <item name="android:textSize">10sp</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
     </style>
 
+    <style name="login_screen_tab_layout_style">
+        <item name="android:background">@color/white</item>
+        <item name="tabTextColor">@color/black</item>
+        <item name="tabIndicatorColor">@color/orange</item>
+    </style>
     <style name="toolbar_text_appearance" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">15sp</item>
@@ -33,8 +47,16 @@
     <style name="button_orange_style" >
         <item name="android:background">@drawable/button_selector</item>
         <item name="android:padding">10dp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
+    <style name="market_knowledge_bg_style" >
+        <item name="android:background">@color/extra_light_gray</item>
+    </style>
+    <style name="market_knowledge_item_style" >
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/black</item>
 
+    </style>
 
 
 </resources>

@@ -8,7 +8,7 @@ import com.example.login.presentation.fragments.IndividualFragment
 class PagerAdapter(fragment:Fragment):FragmentStateAdapter(fragment) {
 
 
-    private val fragmentHeights = listOf(650, 850)
+    private val fragmentHeights = listOf(750, 1000)
 
 
     override fun getItemCount()=2

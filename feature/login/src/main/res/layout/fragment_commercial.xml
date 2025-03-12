@@ -51,6 +51,7 @@
             android:id="@+id/til_password"
             android:hint="@string/commercial_tab_hint_digital_password"
             android:layout_width="match_parent"
+            android:inputType="numberPassword"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 

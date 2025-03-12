@@ -39,7 +39,7 @@ class MarketKnowledgeAdapter :
                 binding.tvSell.setTextColor(binding.root.context.getColor(R.color.black))
                 binding.tvBuy.setTextColor(binding.root.context.getColor(R.color.black))
 
-                binding.root.setBackgroundColor(binding.root.context.getColor(R.color.white))
+                binding.root.setBackgroundColor(binding.root.context.getColor(R.color.market_knowledge_item_bg_color))
                 if (!isLastItem) {
                     layoutParams.setMargins(15, 0, 15, 0)
                 }

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/extra_light_gray"
+    style="@style/market_knowledge_bg_style"
     tools:context=".presentation.fragment.MarketFragment">
 
 <include layout="@layout/toolbar_market_fragment"

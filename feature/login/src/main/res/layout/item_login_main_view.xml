@@ -35,12 +35,11 @@
                 android:background="@color/dark_grey"/>
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tl_tab"
-                android:background="@color/white"
+                style="@style/login_screen_tab_layout_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tabIndicatorFullWidth="true"
-                app:tabTextColor="@color/black"
-                app:tabIndicatorColor="@color/orange"/>
+                />
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vp_pager"
                 android:layout_width="match_parent"

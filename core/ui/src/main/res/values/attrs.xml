@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="CustomBottomNavigationView">
-        <attr name="menu" format="reference"/>
-        <attr name="fabIcon" format="reference"/>
+        <attr name="lineColor" format="color"/>
+        <attr name="bgColor" format="color"/>
     </declare-styleable>
 </resources>
