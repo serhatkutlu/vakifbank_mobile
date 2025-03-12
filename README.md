@@ -26,23 +26,29 @@ This project is a small prototype of the VakıfBank mobile application that I ac
 
 ### 1. **App Module**
 - The main module of the application.
-- Contains all core functionalities, user interface components, resource files, and dependencies.
+- Contains all core functionalities and dependencies.
 - The application is compiled and run from this module.
 
 ### 2. **Core Module**
 - **Common**: Contains reusable code and components shared across different parts of the application. Helper classes, extensions, and shared functions reside here.
 - **Navigation**: Includes the navigation graph file for the application.
-- **Data**: Manages data and interacts with data sources (e.g., database, API).
+- **Data**: Manages data and interacts with data sources.
 - **Domain**: Contains business logic and rules, providing the core functionality of the application.
 - **Network**: Handles network operations, API calls, and data transmission.
-- **UI**: Designs the user interface and manages user interactions.
+- **UI**: Designs the user interface, manages user interactions, and handles user interface components and resource files.
 
 ### 3. **Feature Modules**
 - **Splash**: Contains the application's initial launch screen.
 - **Login**: Handles user login and related functionalities.
 - **Story**: Displays informative content in a story format. Shows videos or images fetched from a remote server.
 - **MarketKnowledge**: Provides users with the latest prices of currencies and precious metals. This module enables users to access up-to-date market information.
+---
+## Features
+- **Multilingual Support (Turkish & English)**: The application supports Turkish and English languages based on user preferences.
 
+- **Dark Theme Support**:Users can switch between light and dark themes based on their preferences.
+
+- **Compatible with API 24+ Devices**:The application is compatible with Android 7.0 (API 24) and above.
 ---
 ### Clone the Project
 1. Clone this repository to your local machine using the following command:
