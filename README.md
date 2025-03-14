@@ -13,7 +13,7 @@ This project is a small prototype of the VakıfBank mobile application that I ac
 ## Technologies Used
 
 - **Kotlin + XML**: The primary language and layout structure of the application.
-- **MVVM (Model-View-ViewModel)**: The core architecture of the project.
+- **MVVM + MVI**: The project primarily follows the MVVM architecture while incorporating MVI concepts like unidirectional data flow, event handling, and effect management.
 - **Dagger Hilt**: Used for dependency injection.
 - **Glide**: Used for loading GIFs and images.
 - **ExoPlayer**: Provides video playback functionality for the story view.
